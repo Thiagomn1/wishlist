@@ -47,7 +47,7 @@ export const addToWishlist = async (req: Request, res: Response) => {
     if (exists) {
       return res
         .status(400)
-        .json({ error: 'Produto já está na lista de desejos' });
+        .json({ error: 'Produto já está na lista de desejos.' });
     }
 
     wishlist.push(product);
@@ -75,7 +75,7 @@ export const removeFromWishlist = async (req: Request, res: Response) => {
     if (!exists) {
       return res
         .status(400)
-        .json({ error: 'Produto não encontrado na lista de desejos' });
+        .json({ error: 'Produto não encontrado na lista de desejos.' });
     }
 
     wishlist = wishlist.filter((item) => item.code !== code);

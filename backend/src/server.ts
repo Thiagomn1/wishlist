@@ -11,14 +11,14 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/api', (req, res) => {
-  res.json({ message: 'Wishlist API - Luizalabs' });
+  res.json({ message: 'Wishlist API - Luizalabs.' });
 });
 
 app.use('/api/products', productRoutes);
 app.use('/api/wishlist', wishlistRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta: ${PORT}`);
+  console.log(`Servidor rodando na porta: ${PORT}.`);
 });
 
 export default app;
