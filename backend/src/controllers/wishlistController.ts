@@ -39,9 +39,11 @@ export const addToWishlist = async (req: Request, res: Response) => {
     await ensureWishlistFileExists();
 
     const productsData = await fs.readFile(productsPath, 'utf-8');
-    const products: Product[] = JSON.parse(productsData);
+    const parsedData = JSON.parse(productsData);
+    const products: Product[] = parsedData.products;
 
     const product = products.find((p) => p.code === code);
+
     if (!product) {
       return res.status(404).json({ error: 'Produto não encontrado' });
     }
