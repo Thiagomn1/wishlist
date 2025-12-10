@@ -2,13 +2,12 @@ import { Request, Response } from 'express';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { WishlistItem, Product } from '../types/index.js';
+import { WishlistItem } from '../types/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const wishlistPath = path.join(__dirname, '../../data/wishlist.json');
-const productsPath = path.join(__dirname, '../../data/mock-products.json');
 
 const ensureWishlistFileExists = async (): Promise<void> => {
   try {
@@ -34,24 +33,15 @@ export const getWishlist = async (req: Request, res: Response) => {
 
 export const addToWishlist = async (req: Request, res: Response) => {
   try {
-    const { code } = req.body;
+    const { product } = req.body;
 
     await ensureWishlistFileExists();
-
-    const productsData = await fs.readFile(productsPath, 'utf-8');
-    const parsedData = JSON.parse(productsData);
-    const products: Product[] = parsedData.products;
-
-    const product = products.find((p) => p.code === code);
-
-    if (!product) {
-      return res.status(404).json({ error: 'Produto não encontrado' });
-    }
 
     const data = await fs.readFile(wishlistPath, 'utf-8');
     const wishlist: WishlistItem[] = JSON.parse(data);
 
-    const exists = wishlist.find((item) => item.code === code);
+    const exists = wishlist.find((item) => item.code === product.code);
+
     if (exists) {
       return res
         .status(400)

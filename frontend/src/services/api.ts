@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { Product } from '../types';
 
 export const api = axios.create({
   baseURL: 'http://localhost:3001/api',
@@ -19,8 +20,8 @@ export const wishlistApi = {
     const response = await api.get('/wishlist');
     return response.data;
   },
-  addToWishlist: async (code: string) => {
-    const response = await api.post('/wishlist', { code });
+  addToWishlist: async (product: Product) => {
+    const response = await api.post('/wishlist', { product });
     return response.data;
   },
   removeFromWishlist: async (code: string) => {
