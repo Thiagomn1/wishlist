@@ -30,7 +30,7 @@ function ProfileDropdown() {
 
       {open && (
         <div className="absolute right-auto left-0 z-50 mt-4 w-44 rounded-xl bg-white py-3 text-black shadow-[3px_3px_12px_rgba(0,0,0,0.15)] md:right-0 md:left-auto">
-          <div className="absolute -top-2 left-2 h-0 w-0 border-r-12 border-b-10 border-l-12 border-transparent border-b-white md:right-2 md:left-auto"></div>
+          <div className="absolute -top-3 left-1 h-0 w-0 border-r-12 border-b-14 border-l-12 border-transparent border-b-white md:right-2 md:left-auto"></div>
 
           <ul className="flex flex-col space-y-2 px-4">
             <li className="hover:text-purple cursor-pointer">Entrar</li>
@@ -89,7 +89,7 @@ function Navbar() {
           <CiHeart className="h-8 w-8" />
         </Link>
 
-        <div className="mr-4 ml-6 hidden md:flex lg:mr-8 lg:ml-10">
+        <div className="mr-14 ml-8 hidden md:flex">
           <ProfileDropdown />
         </div>
       </div>

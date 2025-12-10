@@ -5,14 +5,14 @@ import type { Product } from '../types';
 
 interface ProductCardProps {
   product: Product;
-  onToggleWishlist?: (productCode: Product) => void;
+  onToggle?: (productCode: Product) => void;
   isWishlisted?: boolean;
   isWishlistPage?: boolean;
 }
 
 export default function ProductCard({
   product,
-  onToggleWishlist,
+  onToggle,
   isWishlisted = false,
   isWishlistPage = false,
 }: ProductCardProps) {
@@ -47,7 +47,7 @@ export default function ProductCard({
           aria-label="Adicionar à Wishlist"
           onClick={(e) => {
             e.stopPropagation();
-            onToggleWishlist?.(product);
+            onToggle?.(product);
           }}
           className="absolute top-2 right-2 cursor-pointer rounded-full p-1 transition hover:scale-110"
         >
@@ -58,14 +58,11 @@ export default function ProductCard({
           aria-label="Adicionar à Wishlist"
           onClick={(e) => {
             e.stopPropagation();
-            onToggleWishlist?.(product);
+            onToggle?.(product);
           }}
-          className="absolute top-2 right-2 cursor-pointer rounded-full bg-white p-1 shadow-md transition hover:scale-110"
+          className={`${isWishlisted ? 'bg-red-500' : 'bg-gray-500'} absolute top-2 right-2 cursor-pointer rounded-full p-1 shadow-md transition hover:scale-110`}
         >
-          <CiHeart
-            size={26}
-            className={isWishlisted ? 'text-red-500' : 'text-gray-500'}
-          />
+          <CiHeart size={26} className="text-white" />
         </button>
       )}
 

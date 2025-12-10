@@ -60,17 +60,19 @@ function Home() {
         <hr className="hidden md:block" />
       </div>
 
-      <div className="my-6 flex w-full flex-wrap justify-center gap-6 px-4 sm:px-6 md:px-8 lg:px-12">
-        {products.map((product) => (
-          <ProductCard
-            key={product.code}
-            product={product}
-            onToggleWishlist={handleToggleWishlist}
-            isWishlisted={wishlistItems.some(
-              (item) => item.code === product.code
-            )}
-          />
-        ))}
+      <div className="mx-auto my-6 w-full px-4 sm:px-6 md:px-8 lg:px-36">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] justify-items-center gap-6">
+          {products.map((product) => (
+            <ProductCard
+              key={product.code}
+              product={product}
+              onToggle={handleToggleWishlist}
+              isWishlisted={wishlistItems.some(
+                (item) => item.code === product.code
+              )}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
