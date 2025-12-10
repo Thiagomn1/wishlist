@@ -57,7 +57,7 @@ function Navbar() {
         </a>
       </div>
 
-      {/* Seção do meio */}
+      {/* Seção do Meio */}
       <a
         href="/"
         className="absolute left-1/2 shrink-0 -translate-x-1/2 transform md:hidden"
@@ -69,7 +69,7 @@ function Navbar() {
         />
       </a>
 
-      {/* Seção direita */}
+      {/* Seção Direita */}
       <div className="flex items-center md:space-x-8">
         <button
           aria-label="Ir para Wishlist"
