@@ -14,7 +14,9 @@ function ProfileDropdown() {
         setOpen(false);
       }
     }
+
     document.addEventListener('mousedown', handleClick);
+
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 

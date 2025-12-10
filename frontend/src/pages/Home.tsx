@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { productsApi, wishlistApi } from '../services/api';
 import type { Product } from '../types';
 import ProductCard from '../components/ProductCard';
+import Breadcrumb from '../components/Breadcrumb';
 
 function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -38,9 +39,11 @@ function Home() {
     try {
       if (isWishlisted) {
         await wishlistApi.removeFromWishlist(product.code);
+
         setWishlistItems((prev) => prev.filter((p) => p.code !== product.code));
       } else {
         await wishlistApi.addToWishlist(product);
+
         setWishlistItems((prev) => [...prev, product]);
       }
     } catch (err) {
@@ -54,9 +57,7 @@ function Home() {
   return (
     <>
       <div className="md:mx-24">
-        <h4 className="text-purple-dark my-2 ml-4 font-bold md:my-6 md:ml-0">
-          Home
-        </h4>
+        <Breadcrumb />
         <hr className="hidden md:block" />
       </div>
 
