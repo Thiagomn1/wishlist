@@ -21,7 +21,7 @@ function ProfileDropdown() {
     <div className="relative" ref={ref}>
       <button
         aria-label="Abrir menu do usuário"
-        className="flex cursor-pointer items-center"
+        className="flex cursor-pointer items-center transition hover:text-purple-400"
         onClick={() => setOpen((prev) => !prev)}
       >
         <FaUserCircle className="h-8 w-8 md:h-10 md:w-10" />
@@ -45,7 +45,7 @@ function ProfileDropdown() {
 
 function Navbar() {
   return (
-    <nav className="bg-purple relative flex items-center justify-between p-4 text-white md:p-6">
+    <nav className="bg-purple relative flex items-center justify-between p-4 text-white">
       {/* Seção Esquerda*/}
       <div className="flex items-center">
         <div className="md:hidden">
@@ -70,21 +70,23 @@ function Navbar() {
       </a>
 
       {/* Seção Direita */}
-      <div className="flex items-center md:space-x-8">
-        <button
+      <div className="flex items-center md:space-x-12">
+        <a
+          href="/wishlist"
           aria-label="Ir para Wishlist"
-          className="hidden cursor-pointer items-center space-x-2 md:flex"
+          className="hidden cursor-pointer items-center space-x-1 transition hover:text-purple-400 md:flex"
         >
-          <CiHeart size={40} />
+          <CiHeart className="" size={40} />
           <p className="text-xl font-bold">Wishlist</p>
-        </button>
+        </a>
 
-        <button
+        <a
+          href="/wishlist"
           aria-label="Ir para Wishlist"
-          className="cursor-pointer md:hidden"
+          className="cursor-pointer transition hover:text-purple-400 md:hidden"
         >
           <CiHeart className="h-8 w-8" />
-        </button>
+        </a>
 
         <div className="mr-4 ml-6 hidden md:flex lg:mr-8 lg:ml-10">
           <ProfileDropdown />

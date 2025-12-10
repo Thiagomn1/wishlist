@@ -19,11 +19,11 @@ export const wishlistApi = {
     const response = await api.get('/wishlist');
     return response.data;
   },
-  addToWishlist: async (code: number) => {
+  addToWishlist: async (code: string) => {
     const response = await api.post('/wishlist', { code });
     return response.data;
   },
-  removeFromWishlist: async (code: number) => {
+  removeFromWishlist: async (code: string) => {
     const response = await api.delete(`/wishlist/${code}`);
     return response.data;
   },
