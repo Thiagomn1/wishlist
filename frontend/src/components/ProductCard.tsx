@@ -1,16 +1,20 @@
 import { CiHeart } from 'react-icons/ci';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
+import { LuX } from 'react-icons/lu';
 import type { Product } from '../types';
 
 interface ProductCardProps {
   product: Product;
   onToggleWishlist?: (productCode: Product) => void;
   isWishlisted?: boolean;
+  isWishlistPage?: boolean;
 }
 
 export default function ProductCard({
   product,
+  onToggleWishlist,
   isWishlisted = false,
+  isWishlistPage = false,
 }: ProductCardProps) {
   const fullPrice = Number(product.fullPriceInCents) / 100;
   const salePrice = Number(product.salePriceInCents) / 100;
@@ -38,15 +42,32 @@ export default function ProductCard({
 
   return (
     <div className="relative max-w-[250px] cursor-pointer rounded-md border border-gray-200 bg-white p-3 shadow-[4px_3px_8px_rgba(0,0,0,0.5)] transition-all hover:scale-[1.01]">
-      <button
-        aria-label="Adicionar à Wishlist"
-        className="absolute top-2 right-2 cursor-pointer rounded-full bg-white p-1 shadow-md transition hover:scale-110"
-      >
-        <CiHeart
-          size={26}
-          className={isWishlisted ? 'text-red-500' : 'text-gray-500'}
-        />
-      </button>
+      {isWishlistPage ? (
+        <button
+          aria-label="Adicionar à Wishlist"
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleWishlist?.(product);
+          }}
+          className="absolute top-2 right-2 cursor-pointer rounded-full p-1 transition hover:scale-110"
+        >
+          <LuX size={26} className="text-gray-800" />
+        </button>
+      ) : (
+        <button
+          aria-label="Adicionar à Wishlist"
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleWishlist?.(product);
+          }}
+          className="absolute top-2 right-2 cursor-pointer rounded-full bg-white p-1 shadow-md transition hover:scale-110"
+        >
+          <CiHeart
+            size={26}
+            className={isWishlisted ? 'text-red-500' : 'text-gray-500'}
+          />
+        </button>
+      )}
 
       <img
         src={product.image}
