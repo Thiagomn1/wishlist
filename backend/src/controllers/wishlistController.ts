@@ -20,8 +20,10 @@ const ensureWishlistFileExists = async (): Promise<void> => {
 export const getWishlist = async (req: Request, res: Response) => {
   try {
     await ensureWishlistFileExists();
+
     const data = await fs.readFile(wishlistPath, 'utf-8');
     const wishlist: WishlistItem[] = JSON.parse(data);
+
     res.json(wishlist);
   } catch (error) {
     res.status(500).json({
