@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router';
 import logo from '../assets/logo-netshoes.png';
 import { CiHeart } from 'react-icons/ci';
 import { FaUserCircle } from 'react-icons/fa';
@@ -52,14 +53,14 @@ function Navbar() {
           <ProfileDropdown />
         </div>
 
-        <a href="/" className="ml-4 hidden items-center md:flex lg:ml-8">
-          <img src={logo} alt="Logo Netshoes" className="h-16 lg:h-20" />
-        </a>
+        <Link to="/" className="ml-4 hidden items-center md:flex lg:ml-8">
+          <img src={logo} alt="Logo Netshoes" className="h-16" />
+        </Link>
       </div>
 
       {/* Seção do Meio */}
-      <a
-        href="/"
+      <Link
+        to="/"
         className="absolute left-1/2 shrink-0 -translate-x-1/2 transform md:hidden"
       >
         <img
@@ -67,26 +68,26 @@ function Navbar() {
           alt="Logo Netshoes"
           className="h-12 object-contain sm:h-16"
         />
-      </a>
+      </Link>
 
       {/* Seção Direita */}
       <div className="flex items-center md:space-x-12">
-        <a
-          href="/wishlist"
+        <Link
+          to="/wishlist"
           aria-label="Ir para Wishlist"
           className="hidden cursor-pointer items-center space-x-1 transition hover:text-purple-400 md:flex"
         >
           <CiHeart className="" size={40} />
           <p className="text-xl font-bold">Wishlist</p>
-        </a>
+        </Link>
 
-        <a
-          href="/wishlist"
+        <Link
+          to="/wishlist"
           aria-label="Ir para Wishlist"
           className="cursor-pointer transition hover:text-purple-400 md:hidden"
         >
           <CiHeart className="h-8 w-8" />
-        </a>
+        </Link>
 
         <div className="mr-4 ml-6 hidden md:flex lg:mr-8 lg:ml-10">
           <ProfileDropdown />
