@@ -38,10 +38,10 @@ function Home() {
     try {
       if (isWishlisted) {
         await wishlistApi.removeFromWishlist(product.code);
-        setWishlistItems((prev) => prev.filter((p) => p !== product));
+        setWishlistItems((prev) => prev.filter((p) => p.code !== product.code));
       } else {
         await wishlistApi.addToWishlist(product);
-        setWishlistItems((prev) => prev.filter((p) => p.code !== product.code));
+        setWishlistItems((prev) => [...prev, product]);
       }
     } catch (err) {
       console.error('Erro ao atualizar wishlist:', err);
