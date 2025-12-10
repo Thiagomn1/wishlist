@@ -31,7 +31,9 @@ function Home() {
   }, []);
 
   const handleToggleWishlist = async (product: Product) => {
-    const isWishlisted = wishlistItems.includes(product);
+    const isWishlisted = wishlistItems.some(
+      (item) => item.code === product.code
+    );
 
     try {
       if (isWishlisted) {
@@ -39,7 +41,7 @@ function Home() {
         setWishlistItems((prev) => prev.filter((p) => p !== product));
       } else {
         await wishlistApi.addToWishlist(product);
-        setWishlistItems((prev) => [...prev, product]);
+        setWishlistItems((prev) => prev.filter((p) => p.code !== product.code));
       }
     } catch (err) {
       console.error('Erro ao atualizar wishlist:', err);
@@ -64,7 +66,9 @@ function Home() {
             key={product.code}
             product={product}
             onToggleWishlist={handleToggleWishlist}
-            isWishlisted={wishlistItems.includes(product)}
+            isWishlisted={wishlistItems.some(
+              (item) => item.code === product.code
+            )}
           />
         ))}
       </div>
