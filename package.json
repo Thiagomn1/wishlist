@@ -13,7 +13,9 @@
     "lint:frontend": "cd frontend && npm run lint",
     "format": "npm run format:backend && npm run format:frontend",
     "format:backend": "cd backend && npm run format",
-    "format:frontend": "cd frontend && npm run format"
+    "format:frontend": "cd frontend && npm run format",
+    "test:frontend": "cd frontend && npm run test",
+    "test:frontend:coverage": "cd frontend && npm run test:coverage"
   },
   "repository": {
     "type": "git",
