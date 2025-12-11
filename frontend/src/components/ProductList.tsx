@@ -19,7 +19,7 @@ function ProductList({
     <>
       <Breadcrumb />
       <div className="px-8 md:my-6 md:px-18 lg:px-28 xl:px-36">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] justify-items-center gap-6">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,250px))] justify-center gap-6">
           {products.map((product) => (
             <ProductCard
               key={product.code}
