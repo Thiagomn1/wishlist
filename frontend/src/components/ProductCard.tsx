@@ -29,7 +29,7 @@ export default function ProductCard({
       stars.push(
         <FaStar
           key={`full-${i}`}
-          className="text-yellow-500"
+          className="text-yellow-600"
           data-testid="star-full"
         />
       );
@@ -39,7 +39,7 @@ export default function ProductCard({
       stars.push(
         <FaStarHalfAlt
           key="half"
-          className="text-yellow-500"
+          className="text-yellow-600"
           data-testid="star-half"
         />
       );
@@ -49,7 +49,7 @@ export default function ProductCard({
       stars.push(
         <FaRegStar
           key={`empty-${i}`}
-          className="text-yellow-500"
+          className="text-yellow-600"
           data-testid="star-empty"
         />
       );
@@ -97,7 +97,7 @@ export default function ProductCard({
         className="h-40 w-full rounded-lg object-cover"
       />
 
-      <p className="mt-3 line-clamp-2 text-sm font-medium text-gray-600">
+      <p className="mt-3 line-clamp-2 text-sm font-medium text-gray-700">
         {product.name}
       </p>
 
@@ -108,7 +108,7 @@ export default function ProductCard({
         </span>
       </div>
 
-      <p className="mt-2 text-sm text-gray-400 line-through">
+      <p className="deco mt-2 text-sm text-gray-400 line-through">
         R$ {fullPrice.toFixed(2)}
       </p>
 
