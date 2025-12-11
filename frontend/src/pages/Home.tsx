@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { productsApi, wishlistApi } from '../services/api';
 import type { Product } from '../types';
-import ProductCard from '../components/ProductCard';
-import Breadcrumb from '../components/Breadcrumb';
 import { toast } from 'react-toastify';
+import ProductList from '../components/ProductList';
 
 function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -57,28 +56,16 @@ function Home() {
     }
   };
 
-  if (loading) return <div className="mx-24 py-6">Carregando...</div>;
-  if (error) return <div className="mx-24 py-6">Erro: {error}</div>;
+  if (loading) return <div>Carregando...</div>;
+  if (error) return <div>Erro: {error}</div>;
 
   return (
-    <>
-      <Breadcrumb />
-
-      <div className="mx-auto my-6 w-full px-4 sm:px-6 md:px-8 lg:px-36">
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] justify-items-center gap-6">
-          {products.map((product) => (
-            <ProductCard
-              key={product.code}
-              product={product}
-              onToggle={handleToggleWishlist}
-              isWishlisted={wishlistItems.some(
-                (item) => item.code === product.code
-              )}
-            />
-          ))}
-        </div>
-      </div>
-    </>
+    <ProductList
+      products={products}
+      onToggle={handleToggleWishlist}
+      wishlistItems={wishlistItems}
+      isWishlistPage={false}
+    />
   );
 }
 export default Home;

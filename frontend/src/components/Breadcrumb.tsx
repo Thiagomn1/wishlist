@@ -15,7 +15,7 @@ export default function Breadcrumb() {
 
   return (
     <div className="md:mx-24">
-      <nav className="my-6 ml-4 text-sm text-gray-600 md:ml-0">
+      <nav className="my-4 ml-8 text-sm text-gray-600 md:my-6 md:ml-0">
         <ol className="flex items-center space-x-1">
           {breadcrumbs.map((breadcrumb, index) => {
             const isLast = index === breadcrumbs.length - 1;
