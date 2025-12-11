@@ -56,10 +56,7 @@ function Home() {
 
   return (
     <>
-      <div className="md:mx-24">
-        <Breadcrumb />
-        <hr className="hidden md:block" />
-      </div>
+      <Breadcrumb />
 
       <div className="mx-auto my-6 w-full px-4 sm:px-6 md:px-8 lg:px-36">
         <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] justify-items-center gap-6">
