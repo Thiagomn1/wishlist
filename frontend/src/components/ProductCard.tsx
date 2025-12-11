@@ -97,13 +97,13 @@ export default function ProductCard({
         className="h-40 w-full rounded-lg object-cover"
       />
 
-      <p className="mt-3 line-clamp-2 text-sm font-medium text-gray-700">
+      <p className="mt-3 line-clamp-2 leading-5 font-medium text-gray-700">
         {product.name}
       </p>
 
       <div className="mt-1 flex items-center gap-1 text-sm">
         {renderRating(product.rating)}
-        <span className="ml-1 text-xs text-gray-700">
+        <span className="mt-0.5 ml-0.5 text-sm text-gray-700">
           {product.rating.toFixed(1)}
         </span>
       </div>
@@ -112,7 +112,7 @@ export default function ProductCard({
         R$ {fullPrice.toFixed(2)}
       </p>
 
-      <p className="text-purple-dark text-lg font-bold">
+      <p className="text-purple-dark text-xl font-bold">
         R$ {salePrice.toFixed(2)}
       </p>
     </div>

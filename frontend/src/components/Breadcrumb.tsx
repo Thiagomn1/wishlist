@@ -25,17 +25,17 @@ export default function Breadcrumb() {
                 {!isLast ? (
                   <Link
                     to={breadcrumb.path}
-                    className="text-purple-dark text-base hover:underline"
+                    className="text-purple-dark text-lg hover:underline"
                   >
                     {breadcrumb.name}
                   </Link>
                 ) : (
-                  <span className="text-purple-dark text-base font-bold">
+                  <span className="text-purple-dark text-lg font-bold">
                     {breadcrumb.name}
                   </span>
                 )}
 
-                {!isLast && <span className="mx-1 text-gray-400">/</span>}
+                {!isLast && <span className="mx-0.5 text-gray-400">/</span>}
               </li>
             );
           })}

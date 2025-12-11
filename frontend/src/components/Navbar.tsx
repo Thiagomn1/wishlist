@@ -27,12 +27,15 @@ function ProfileDropdown() {
         className="flex cursor-pointer items-center transition hover:text-purple-400"
         onClick={() => setOpen((prev) => !prev)}
       >
-        <FaUserCircle className="h-8 w-8 md:h-10 md:w-10" />
+        <FaUserCircle
+          data-testid="nav-user-icon"
+          className="h-8 w-8 md:h-10 md:w-10"
+        />
       </button>
 
       {open && (
         <div className="absolute right-auto left-0 z-50 mt-4 w-44 rounded-xl bg-white py-3 text-black shadow-[3px_3px_12px_rgba(0,0,0,0.15)] md:right-0 md:left-auto">
-          <div className="absolute -top-3 left-1 h-0 w-0 border-r-12 border-b-14 border-l-12 border-transparent border-b-white md:right-2 md:left-auto"></div>
+          <div className="absolute -top-3 left-1 h-0 w-0 border-r-12 border-b-14 border-l-12 border-transparent border-b-white md:right-2 md:left-auto" />
 
           <ul className="flex flex-col space-y-2 px-4">
             <li className="hover:text-purple cursor-pointer">Entrar</li>
@@ -79,7 +82,7 @@ function Navbar() {
           aria-label="Ir para Wishlist"
           className="hidden cursor-pointer items-center space-x-1 transition hover:text-purple-400 md:flex"
         >
-          <CiHeart className="" size={40} />
+          <CiHeart data-testid="nav-wishlist-icon" className="" size={40} />
           <p className="text-xl font-bold">Wishlist</p>
         </Link>
 
@@ -88,7 +91,7 @@ function Navbar() {
           aria-label="Ir para Wishlist"
           className="cursor-pointer transition hover:text-purple-400 md:hidden"
         >
-          <CiHeart className="h-8 w-8" />
+          <CiHeart data-testid="nav-wishlist-icon" className="h-8 w-8" />
         </Link>
 
         <div className="mr-14 ml-8 hidden md:flex">
