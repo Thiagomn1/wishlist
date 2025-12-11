@@ -26,15 +26,33 @@ export default function ProductCard({
     const emptyStars = 5 - wholeStars - (hasHalfStar ? 1 : 0);
 
     for (let i = 0; i < wholeStars; i++) {
-      stars.push(<FaStar key={`full-${i}`} className="text-yellow-500" />);
+      stars.push(
+        <FaStar
+          key={`full-${i}`}
+          className="text-yellow-500"
+          data-testid="star-full"
+        />
+      );
     }
 
     if (hasHalfStar) {
-      stars.push(<FaStarHalfAlt key="half" className="text-yellow-500" />);
+      stars.push(
+        <FaStarHalfAlt
+          key="half"
+          className="text-yellow-500"
+          data-testid="star-half"
+        />
+      );
     }
 
     for (let i = 0; i < emptyStars; i++) {
-      stars.push(<FaRegStar key={`empty-${i}`} className="text-yellow-500" />);
+      stars.push(
+        <FaRegStar
+          key={`empty-${i}`}
+          className="text-yellow-500"
+          data-testid="star-empty"
+        />
+      );
     }
 
     return stars;
@@ -44,14 +62,15 @@ export default function ProductCard({
     <div className="relative max-w-[250px] cursor-pointer rounded-md border border-gray-200 bg-white p-3 shadow-[4px_3px_8px_rgba(0,0,0,0.5)] transition-all hover:scale-[1.01]">
       {isWishlistPage ? (
         <button
-          aria-label="Adicionar à Wishlist"
+          aria-label="Remover da Wishlist"
           onClick={(e) => {
             e.stopPropagation();
             onToggle?.(product);
           }}
           className="absolute top-2 right-2 cursor-pointer rounded-full p-1 transition hover:scale-110"
+          data-testid="wishlist-button"
         >
-          <LuX size={26} className="text-gray-800" />
+          <LuX size={26} className="text-gray-800" data-testid="icon-x" />
         </button>
       ) : (
         <button
@@ -60,9 +79,15 @@ export default function ProductCard({
             e.stopPropagation();
             onToggle?.(product);
           }}
-          className={`${isWishlisted ? 'bg-red-500' : 'bg-gray-500'} absolute top-2 right-2 cursor-pointer rounded-full p-1 shadow-md transition hover:scale-110`}
+          className={`${isWishlisted ? 'bg-red-500' : 'bg-gray-400'} absolute top-2 right-2 cursor-pointer rounded-full p-1 shadow-md transition hover:scale-110`}
+          data-testid="wishlist-button"
         >
-          <CiHeart size={26} className="text-white" />
+          <CiHeart
+            size={26}
+            strokeWidth={1}
+            className="text-white"
+            data-testid="icon-heart"
+          />
         </button>
       )}
 
