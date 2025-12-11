@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { wishlistApi } from '../services/api';
 import type { Product } from '../types';
 import ProductCard from '../components/ProductCard';
@@ -30,8 +31,11 @@ function Wishlist() {
     try {
       await wishlistApi.removeFromWishlist(product.code);
       setWishlistItems((prev) => prev.filter((p) => p.code !== product.code));
+
+      toast.success('Produto removido da wishlist com sucesso');
     } catch (err) {
       console.error('Erro ao atualizar wishlist:', err);
+      toast.error('Erro ao atualizar wishlist');
     }
   };
 

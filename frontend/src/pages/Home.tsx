@@ -3,6 +3,7 @@ import { productsApi, wishlistApi } from '../services/api';
 import type { Product } from '../types';
 import ProductCard from '../components/ProductCard';
 import Breadcrumb from '../components/Breadcrumb';
+import { toast } from 'react-toastify';
 
 function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -41,13 +42,18 @@ function Home() {
         await wishlistApi.removeFromWishlist(product.code);
 
         setWishlistItems((prev) => prev.filter((p) => p.code !== product.code));
+
+        toast.success('Produto removido da wishlist com sucesso');
       } else {
         await wishlistApi.addToWishlist(product);
 
         setWishlistItems((prev) => [...prev, product]);
+
+        toast.success('Produto adicionado à wishlist com sucesso');
       }
     } catch (err) {
       console.error('Erro ao atualizar wishlist:', err);
+      toast.error('Erro ao atualizar wishlist');
     }
   };
 
