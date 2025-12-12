@@ -81,7 +81,6 @@ function Home() {
       products={products}
       onToggle={handleToggleWishlist}
       wishlistItems={wishlistItems}
-      isWishlistPage={false}
     />
   );
 }

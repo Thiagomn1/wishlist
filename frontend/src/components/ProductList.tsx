@@ -13,7 +13,7 @@ function ProductList({
   products,
   onToggle,
   wishlistItems,
-  isWishlistPage,
+  isWishlistPage = false,
 }: ProductListProps) {
   return (
     <>

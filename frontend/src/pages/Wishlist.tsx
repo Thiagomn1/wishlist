@@ -57,7 +57,7 @@ function Wishlist() {
       products={wishlistItems}
       onToggle={handleRemoveFromWishlist}
       wishlistItems={wishlistItems}
-      isWishlistPage={true}
+      isWishlistPage
     />
   );
 }
