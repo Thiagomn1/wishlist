@@ -173,7 +173,7 @@ describe('API Services', () => {
         expect(callArgs[0]).toBe(`/wishlist/${productCode}`);
       });
 
-      it('deve retornar produto removido quando API retorna produto', async () => {
+      it('deve retornar mensagem quando prooduto é removido', async () => {
         const productCode = 'D22-2077-006';
         const mockResponse = {
           data: { message: 'Item removido da lista de desejos com sucesso.' },

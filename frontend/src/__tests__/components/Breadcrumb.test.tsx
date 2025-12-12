@@ -41,13 +41,13 @@ describe('Breadcrumb', () => {
     });
 
     it('deve renderizar separadores entre os itens', () => {
-      const { container } = render(
+      render(
         <MemoryRouter initialEntries={['/wishlist']}>
           <Breadcrumb />
         </MemoryRouter>
       );
 
-      const separators = container.querySelectorAll('.text-gray-400');
+      const separators = screen.getAllByTestId('breadcrumb-separator');
       expect(separators).toHaveLength(1);
       expect(separators[0]).toHaveTextContent('/');
     });

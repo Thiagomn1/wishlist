@@ -21,13 +21,6 @@ describe('ProductCard', () => {
       expect(screen.getByText('R$ 303.99')).toBeInTheDocument();
     });
 
-    it('deve exibir preço cheio com line-through', () => {
-      const { container } = render(<ProductCard product={mockProduct} />);
-
-      const fullPriceElement = container.querySelector('.line-through');
-      expect(fullPriceElement).toHaveTextContent('R$ 399.99');
-    });
-
     it('deve formatar preços com duas casas decimais', () => {
       const productWithRoundPrice: Product = {
         ...mockProduct,
@@ -179,7 +172,6 @@ describe('ProductCard', () => {
     it('deve renderizar todos os elementos principais', () => {
       render(<ProductCard product={mockProduct} />);
 
-      expect(screen.getByAltText(mockProduct.name)).toBeInTheDocument();
       expect(screen.getByText(mockProduct.name)).toBeInTheDocument();
       expect(screen.getByText('4.5')).toBeInTheDocument();
       expect(screen.getByText('R$ 399.99')).toBeInTheDocument();

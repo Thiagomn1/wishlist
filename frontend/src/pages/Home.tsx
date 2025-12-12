@@ -56,7 +56,15 @@ function Home() {
     }
   };
 
-  if (loading) return <div>Carregando...</div>;
+  if (loading)
+    return (
+      <div
+        data-testid="loading"
+        className="flex h-screen items-center justify-center"
+      >
+        <span className="loader"></span>
+      </div>
+    );
   if (error) return <div>Erro: {error}</div>;
 
   return (

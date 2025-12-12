@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router';
 import Wishlist from '../../pages/Wishlist';
@@ -53,6 +53,11 @@ vi.mock('../../components/ProductCard', () => ({
 describe('Wishlist', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
   describe('Carregamento inicial', () => {
@@ -67,7 +72,7 @@ describe('Wishlist', () => {
         </BrowserRouter>
       );
 
-      expect(screen.getByText('Carregando...')).toBeInTheDocument();
+      expect(screen.getByTestId('loading')).toBeInTheDocument();
     });
   });
 
@@ -82,7 +87,7 @@ describe('Wishlist', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       expect(screen.getByTestId('product-D22-2077-006')).toBeInTheDocument();
@@ -90,7 +95,7 @@ describe('Wishlist', () => {
       expect(screen.getByTestId('product-3R2-0087-240-02')).toBeInTheDocument();
     });
 
-    it('deve renderizar corretamente quando wishlist está vazia', async () => {
+    it('deve renderizar wishlist vazia', async () => {
       vi.mocked(wishlistApi.getWishlist).mockResolvedValue([]);
 
       render(
@@ -100,7 +105,7 @@ describe('Wishlist', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       expect(screen.queryByTestId(/product-/)).not.toBeInTheDocument();
@@ -130,7 +135,7 @@ describe('Wishlist', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       expect(screen.getByTestId('wishlist-page-flag')).toHaveTextContent(
@@ -155,7 +160,7 @@ describe('Wishlist', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       expect(screen.getByTestId('product-D22-2077-006')).toBeInTheDocument();
@@ -179,10 +184,6 @@ describe('Wishlist', () => {
 
   describe('Tratamento de erros', () => {
     it('deve exibir mensagem de erro quando falha ao carregar wishlist', async () => {
-      const consoleErrorSpy = vi
-        .spyOn(console, 'error')
-        .mockImplementation(() => {});
-
       vi.mocked(wishlistApi.getWishlist).mockRejectedValue(
         new Error('Network error')
       );
@@ -199,16 +200,13 @@ describe('Wishlist', () => {
         ).toBeInTheDocument();
       });
 
-      expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
-
-      consoleErrorSpy.mockRestore();
+      await waitFor(() => {
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
+      });
     });
 
     it('deve exibir toast de erro quando remoção falha', async () => {
       const user = userEvent.setup();
-      const consoleErrorSpy = vi
-        .spyOn(console, 'error')
-        .mockImplementation(() => {});
 
       vi.mocked(wishlistApi.getWishlist).mockResolvedValue([mockProducts[0]]);
       const error = new Error('Failed to remove');
@@ -221,7 +219,7 @@ describe('Wishlist', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       const removeButton = screen.getByTestId('remove-D22-2077-006');
@@ -230,8 +228,6 @@ describe('Wishlist', () => {
       await waitFor(() => {
         expect(toast.error).toHaveBeenCalledWith('Erro ao atualizar wishlist');
       });
-
-      consoleErrorSpy.mockRestore();
     });
   });
 });

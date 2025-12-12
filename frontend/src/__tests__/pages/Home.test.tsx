@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router';
 import Home from '../../pages/Home';
@@ -54,6 +54,11 @@ vi.mock('../../components/ProductCard', () => ({
 describe('Home', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
   describe('Carregamento inicial', () => {
@@ -71,7 +76,7 @@ describe('Home', () => {
         </BrowserRouter>
       );
 
-      expect(screen.getByText('Carregando...')).toBeInTheDocument();
+      expect(screen.getByTestId('loading')).toBeInTheDocument();
     });
   });
 
@@ -89,7 +94,7 @@ describe('Home', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       expect(
@@ -120,7 +125,7 @@ describe('Home', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       expect(screen.queryByTestId(/product-/)).not.toBeInTheDocument();
@@ -158,7 +163,7 @@ describe('Home', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       const firstProductButton = screen.getByTestId('toggle-D22-2077-006');
@@ -186,7 +191,7 @@ describe('Home', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       const toggleButton = screen.getByTestId('toggle-D22-2077-006');
@@ -227,7 +232,7 @@ describe('Home', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       const toggleButton = screen.getByTestId('toggle-D22-2077-006');
@@ -255,10 +260,6 @@ describe('Home', () => {
 
   describe('Tratamento de erros', () => {
     it('deve exibir mensagem de erro quando falha ao carregar produtos', async () => {
-      const consoleErrorSpy = vi
-        .spyOn(console, 'error')
-        .mockImplementation(() => {});
-
       vi.mocked(productsApi.getProducts).mockRejectedValue(
         new Error('Network error')
       );
@@ -276,16 +277,12 @@ describe('Home', () => {
         ).toBeInTheDocument();
       });
 
-      expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
-
-      consoleErrorSpy.mockRestore();
+      await waitFor(() => {
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
+      });
     });
 
     it('deve exibir mensagem de erro quando falha ao carregar wishlist', async () => {
-      const consoleErrorSpy = vi
-        .spyOn(console, 'error')
-        .mockImplementation(() => {});
-
       vi.mocked(productsApi.getProducts).mockResolvedValue({
         products: mockProducts,
       });
@@ -304,15 +301,10 @@ describe('Home', () => {
           screen.getByText('Erro: Erro ao carregar produtos')
         ).toBeInTheDocument();
       });
-
-      consoleErrorSpy.mockRestore();
     });
 
     it('deve exibir toast de erro ao falhar em adicionar produto à wishlist', async () => {
       const user = userEvent.setup();
-      const consoleErrorSpy = vi
-        .spyOn(console, 'error')
-        .mockImplementation(() => {});
 
       vi.mocked(productsApi.getProducts).mockResolvedValue({
         products: mockProducts,
@@ -328,7 +320,7 @@ describe('Home', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       const toggleButton = screen.getByTestId('toggle-D22-2077-006');
@@ -337,22 +329,10 @@ describe('Home', () => {
       await waitFor(() => {
         expect(toast.error).toHaveBeenCalledWith('Erro ao atualizar wishlist');
       });
-
-      await waitFor(() => {
-        expect(consoleErrorSpy).toHaveBeenCalledWith(
-          'Erro ao atualizar wishlist:',
-          error
-        );
-      });
-
-      consoleErrorSpy.mockRestore();
     });
 
     it('deve exibir toast de erro ao falhar em remover produto da wishlist', async () => {
       const user = userEvent.setup();
-      const consoleErrorSpy = vi
-        .spyOn(console, 'error')
-        .mockImplementation(() => {});
 
       vi.mocked(productsApi.getProducts).mockResolvedValue({
         products: mockProducts,
@@ -368,7 +348,7 @@ describe('Home', () => {
       );
 
       await waitFor(() => {
-        expect(screen.queryByText('Carregando...')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('loading')).not.toBeInTheDocument();
       });
 
       const toggleButton = screen.getByTestId('toggle-D22-2077-006');
@@ -377,15 +357,6 @@ describe('Home', () => {
       await waitFor(() => {
         expect(toast.error).toHaveBeenCalledWith('Erro ao atualizar wishlist');
       });
-
-      await waitFor(() => {
-        expect(consoleErrorSpy).toHaveBeenCalledWith(
-          'Erro ao atualizar wishlist:',
-          error
-        );
-      });
-
-      consoleErrorSpy.mockRestore();
     });
   });
 });

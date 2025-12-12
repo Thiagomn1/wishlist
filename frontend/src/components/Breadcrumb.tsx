@@ -35,7 +35,14 @@ export default function Breadcrumb() {
                   </span>
                 )}
 
-                {!isLast && <span className="mx-0.5 text-gray-400">/</span>}
+                {!isLast && (
+                  <span
+                    data-testid="breadcrumb-separator"
+                    className="mx-0.5 text-gray-400"
+                  >
+                    /
+                  </span>
+                )}
               </li>
             );
           })}

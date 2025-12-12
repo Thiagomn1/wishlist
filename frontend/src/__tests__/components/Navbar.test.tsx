@@ -14,7 +14,7 @@ describe('Navbar', () => {
   });
 
   describe('Renderização básica', () => {
-    it('deve renderizar o navbar', () => {
+    it('deve renderizar a navbar', () => {
       const { container } = render(
         <BrowserRouter>
           <Navbar />
@@ -129,15 +129,10 @@ describe('Navbar', () => {
       await user.click(userButton);
 
       await waitFor(() => {
-        const entrar = screen.getByText('Entrar');
-        const minhaConta = screen.getByText('Minha Conta');
-        const enderecos = screen.getByText('Endereços');
-        const minhaNetshoes = screen.getByText('Minha Netshoes');
-
-        expect(entrar).toBeInTheDocument();
-        expect(minhaConta).toBeInTheDocument();
-        expect(enderecos).toBeInTheDocument();
-        expect(minhaNetshoes).toBeInTheDocument();
+        expect(screen.getByText('Entrar')).toBeInTheDocument();
+        expect(screen.getByText('Minha Conta')).toBeInTheDocument();
+        expect(screen.getByText('Endereços')).toBeInTheDocument();
+        expect(screen.getByText('Minha Netshoes')).toBeInTheDocument();
       });
     });
   });
