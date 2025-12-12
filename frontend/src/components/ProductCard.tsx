@@ -59,7 +59,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className="relative max-w-[250px] cursor-pointer rounded-md border border-gray-200 bg-white p-3 shadow-[4px_3px_8px_rgba(0,0,0,0.5)] transition-all hover:scale-[1.01]">
+    <div className="relative flex max-w-[250px] cursor-pointer flex-col rounded-md border border-gray-200 bg-white p-3 shadow-[4px_3px_8px_rgba(0,0,0,0.5)] transition-all hover:scale-[1.01]">
       {isWishlistPage ? (
         <button
           aria-label="Remover da Wishlist"
@@ -97,24 +97,28 @@ export default function ProductCard({
         className="h-40 w-full rounded-lg object-cover"
       />
 
-      <p className="mt-3 line-clamp-2 leading-5 font-medium text-gray-700">
-        {product.name}
-      </p>
+      <div className="flex flex-1 flex-col">
+        <p className="mt-3 line-clamp-2 leading-5 font-medium text-gray-700">
+          {product.name}
+        </p>
 
-      <div className="mt-1 flex items-center gap-1 text-sm">
-        {renderRating(product.rating)}
-        <span className="mt-0.5 ml-0.5 text-sm text-gray-700">
-          {product.rating.toFixed(1)}
-        </span>
+        <div className="mt-1 flex items-center gap-1 text-sm">
+          {renderRating(product.rating)}
+          <span className="mt-0.5 ml-0.5 text-sm text-gray-700">
+            {product.rating.toFixed(1)}
+          </span>
+        </div>
+
+        <div className="mt-auto">
+          <p className="deco mt-2 text-sm text-gray-400 line-through">
+            R$ {fullPrice.toFixed(2)}
+          </p>
+
+          <p className="text-purple-dark text-xl font-bold">
+            R$ {salePrice.toFixed(2)}
+          </p>
+        </div>
       </div>
-
-      <p className="deco mt-2 text-sm text-gray-400 line-through">
-        R$ {fullPrice.toFixed(2)}
-      </p>
-
-      <p className="text-purple-dark text-xl font-bold">
-        R$ {salePrice.toFixed(2)}
-      </p>
     </div>
   );
 }

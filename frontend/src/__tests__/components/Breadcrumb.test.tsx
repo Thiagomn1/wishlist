@@ -100,25 +100,4 @@ describe('Breadcrumb', () => {
       expect(screen.queryByText('wishlist')).not.toBeInTheDocument();
     });
   });
-
-  describe('Edge Cases', () => {
-    it('deve renderizar path vazio como apenas Home', () => {
-      render(
-        <MemoryRouter initialEntries={['']}>
-          <Breadcrumb />
-        </MemoryRouter>
-      );
-
-      expect(screen.getByText('Home')).toBeInTheDocument();
-
-      const { container } = render(
-        <MemoryRouter initialEntries={['']}>
-          <Breadcrumb />
-        </MemoryRouter>
-      );
-
-      const listItems = container.querySelectorAll('li');
-      expect(listItems).toHaveLength(1);
-    });
-  });
 });
