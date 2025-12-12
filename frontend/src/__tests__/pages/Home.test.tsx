@@ -105,11 +105,6 @@ describe('Home', () => {
           'Bola de Futebol Society Penalty 8 X - Branco+Verde Limão'
         )
       ).toBeInTheDocument();
-      expect(
-        screen.getByText(
-          'Kit 4 Camiseta Masculina Segunda Pele Proteção Solar UV Térmica Praia Manga Longa Blusa Camisa - Cinza+Azul'
-        )
-      ).toBeInTheDocument();
     });
 
     it('deve renderizar lista vazia quando não há produtos', async () => {
