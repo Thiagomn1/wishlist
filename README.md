@@ -123,5 +123,5 @@ Os testes cobrem componentes, páginas e serviços. Utilizando mocks para isolar
 Algumas decisões que tive durante o design das páginas:
 
 - Na lista de produtos, o PDF na página home, os cards estão centralizados na página, enquanto na seção da wishlist em uma das imagens eles estão alinhados a esquerda enquanto na outra imagem a wishlist está centralizada novamente. Decidi seguir com os cards padronizados e estando centralizados na página mas com os itens começando pela esquerda.
-- Também na página de wishlist, em uma imagem o ícone de remover está com o X enquanto na outra ele está como o coração vermelho/cinza igual a home, por questões de consistência e melhor indicação do tipo de ação que o botão faz na wishlist, decidi seguir com o X na wishlist enquanto a home tem o coração de adicionar/remover.
+- Também na página de wishlist, em uma imagem o ícone de remover está com o X enquanto na outra ele está com o coração vermelho/cinza igual a home, por questões de consistência e melhor indicação do tipo de ação que o botão faz na wishlist, decidi seguir com o X na wishlist enquanto a home tem o coração de adicionar/remover.
 - No geral, tentei replicar as páginas o mais próximo possível do design fornecido, apesar de não ter valores de CSS como margens e paddings exatas como em um design do Figma.
