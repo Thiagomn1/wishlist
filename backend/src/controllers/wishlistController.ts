@@ -69,7 +69,7 @@ export const removeFromWishlist = async (req: Request, res: Response) => {
     await ensureWishlistFileExists();
 
     const data = await fs.readFile(wishlistPath, 'utf-8');
-    let wishlist: WishlistItem[] = JSON.parse(data);
+    const wishlist: WishlistItem[] = JSON.parse(data);
 
     const exists = wishlist.find((item) => item.code === code);
     if (!exists) {
@@ -78,8 +78,8 @@ export const removeFromWishlist = async (req: Request, res: Response) => {
         .json({ error: 'Produto não encontrado na lista de desejos.' });
     }
 
-    wishlist = wishlist.filter((item) => item.code !== code);
-    await fs.writeFile(wishlistPath, JSON.stringify(wishlist, null, 2));
+    const newWishlist = wishlist.filter((item) => item.code !== code);
+    await fs.writeFile(wishlistPath, JSON.stringify(newWishlist, null, 2));
 
     res
       .status(204)
