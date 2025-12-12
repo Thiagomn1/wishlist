@@ -116,7 +116,7 @@ Sendo o foco do teste o Frontend, escolhi um arquivo JSON como persistência de 
 
 ### Testes
 
-Os testes cobrem componentes, páginas e serviços. Utilizando mocks para isolar a lógica e garantir que cada unidade funcione independentemente.
+Os testes cobrem componentes, páginas e serviços. Utilizando mocks para isolar a lógica e garantir que cada um funcione independentemente. Não realizei testes na API por se tratar apenas de um mock para buscar e adicionar/remover produtos em um JSON.
 
 ### Design/CSS
 
