@@ -19,17 +19,22 @@ function ProductList({
     <>
       <Breadcrumb />
       <div className="px-8 md:my-6 md:px-18 lg:px-28 xl:px-36">
-        <div className="grid grid-cols-[repeat(auto-fit,250px)] justify-center gap-6">
+        <div
+          className="grid grid-cols-[repeat(auto-fit,250px)] justify-center gap-6"
+          role="list"
+          aria-label="Lista de produtos"
+        >
           {products.map((product) => (
-            <ProductCard
-              key={product.code}
-              product={product}
-              onToggle={onToggle}
-              isWishlisted={wishlistItems.some(
-                (item) => item.code === product.code
-              )}
-              isWishlistPage={isWishlistPage}
-            />
+            <div key={product.code} role="listitem">
+              <ProductCard
+                product={product}
+                onToggle={onToggle}
+                isWishlisted={wishlistItems.some(
+                  (item) => item.code === product.code
+                )}
+                isWishlistPage={isWishlistPage}
+              />
+            </div>
           ))}
         </div>
       </div>

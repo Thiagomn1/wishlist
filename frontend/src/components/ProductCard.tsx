@@ -102,19 +102,28 @@ export default function ProductCard({
           {product.name}
         </p>
 
-        <div className="mt-1 flex items-center gap-1 text-sm">
+        <div
+          className="mt-1 flex items-center gap-1 text-sm"
+          role="img"
+          aria-label={`Avaliação: ${product.rating.toFixed(1)} estrelas`}
+        >
           {renderRating(product.rating)}
-          <span className="mt-0.5 ml-0.5 text-sm text-gray-700">
+          <span
+            aria-hidden="true"
+            className="mt-0.5 ml-0.5 text-sm text-gray-700"
+          >
             {product.rating.toFixed(1)}
           </span>
         </div>
 
         <div className="mt-auto">
           <p className="deco mt-2 text-sm text-gray-400 line-through">
+            <span className="sr-only">Preço original: </span>
             R$ {fullPrice.toFixed(2)}
           </p>
 
           <p className="text-purple-dark text-xl font-bold">
+            <span className="sr-only">Preço promocional: </span>
             R$ {salePrice.toFixed(2)}
           </p>
         </div>

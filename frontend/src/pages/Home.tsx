@@ -61,11 +61,14 @@ function Home() {
       <div
         data-testid="loading"
         className="flex h-screen items-center justify-center"
+        role="status"
+        aria-label="Carregando produtos"
       >
-        <span className="loader"></span>
+        <span className="loader" aria-hidden="true"></span>
+        <span className="sr-only">Carregando...</span>
       </div>
     );
-  if (error) return <div>Erro: {error}</div>;
+  if (error) return <div role="alert">Erro: {error}</div>;
 
   return (
     <ProductList
