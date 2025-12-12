@@ -18,7 +18,13 @@ function Home() {
           productsApi.getProducts(),
           wishlistApi.getWishlist(),
         ]);
-        setProducts(productsData.products);
+
+        const filteredProdcuts = productsData.products.filter(
+          (product: Product) =>
+            product.available && product.stockAvailable && product.visible
+        );
+
+        setProducts(filteredProdcuts);
         setWishlistItems(wishlistData);
       } catch (err) {
         setError('Erro ao carregar produtos');
