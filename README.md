@@ -104,16 +104,24 @@ npm run format
 
 ### TailwindCSS
 
-As instruções do teste não especificava a necessidade de CSS puro, SASS ou derivados, então o Tailwind foi escolhido pela agilidade no desenvolvimento e facilidade de criar layouts responsivos sem sair do JSX.
+As instruções do teste não especificava a necessidade de CSS puro, SASS ou derivados, então escolhei o Tailwind pela agilidade no desenvolvimento e facilidade de criar layouts responsivos sem sair do JSX.
 
 ### Axios
 
-Axios oferece uma API mais limpa que fetch nativo, com suporte para transformação automática de JSON.
+Axios oferece uma API mais limpa que fetch nativo, com suporte de transformação automática para JSON.
 
-### Por que JSON como banco de dados?
+### JSON como banco de dados
 
-Sendo o foco do teste o Frontend, um arquivo JSON foi escolhido para simplificar a API e evitar a necessidade de subir um banco de dados dedicado para a aplicação. Um JSON já a Permite persistência simples e supre as necessidades do projeto.
+Sendo o foco do teste o Frontend, escolhi um arquivo JSON como persistência de dados para simplificar a API e evitar a necessidade de subir um banco de dados dedicado para a aplicação, já suprindo a necessidade do projeto.
 
 ### Testes
 
-Os testes cobrem componentes, páginas e serviços. Usamos mocks para isolar a lógica e garantir que cada unidade funcione independentemente.
+Os testes cobrem componentes, páginas e serviços. Utilizando mocks para isolar a lógica e garantir que cada unidade funcione independentemente.
+
+### Design/CSS
+
+Algumas decisões que tive durante o design das páginas:
+
+- Na lista de produtos, o PDF na página home, os cards estão centralizados na página, enquanto na seção da wishlist em uma das imagens eles estão alinhados a esquerda enquanto na outra imagem a wishlist está centralizada novamente. Decidi seguir com os cards padronizados e estando centralizados na página mas com os itens começando pela esquerda.
+- Também na página de wishlist, em uma imagem o ícone de remover está com o X enquanto na outra ele está como o coração vermelho/cinza igual a home, por questões de consistência e melhor indicação do tipo de ação que o botão faz na wishlist, decidi seguir com o X na wishlist enquanto a home tem o coração de adicionar/remover.
+- No geral, tentei replicar as páginas o mais próximo possível do design fornecido, apesar de não ter valores de CSS como margens e paddings exatas como em um design do Figma.

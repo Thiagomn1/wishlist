@@ -51,7 +51,7 @@ export default function Breadcrumb() {
           })}
         </ol>
       </nav>
-      <hr className="hidden md:block" />
+      <hr className="text-gray-dark hidden md:block" />
     </div>
   );
 }

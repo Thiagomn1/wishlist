@@ -79,7 +79,7 @@ export default function ProductCard({
             e.stopPropagation();
             onToggle?.(product);
           }}
-          className={`${isWishlisted ? 'bg-red-500' : 'bg-gray-400'} absolute top-2 right-2 cursor-pointer rounded-full p-1 shadow-md transition hover:scale-110`}
+          className={`${isWishlisted ? 'bg-red-500' : 'bg-gray-dark'} absolute top-2 right-2 cursor-pointer rounded-full p-1 shadow-md transition hover:scale-110`}
           data-testid="wishlist-button"
         >
           <CiHeart
