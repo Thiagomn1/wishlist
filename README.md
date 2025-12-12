@@ -104,7 +104,7 @@ npm run format
 
 ### TailwindCSS
 
-As instruções do teste não especificava a necessidade de CSS puro, SASS ou derivados, então escolhei o Tailwind pela agilidade no desenvolvimento e facilidade de criar layouts responsivos sem sair do JSX.
+As instruções do teste não especificava o uso de CSS puro, SASS ou derivados, então decidi seguir com o Tailwind pela agilidade no desenvolvimento e facilidade de criar layouts responsivos sem sair do JSX.
 
 ### Axios
 
