@@ -117,7 +117,7 @@ export default function ProductCard({
         </div>
 
         <div className="mt-auto">
-          <p className="deco mt-2 text-sm text-gray-400 line-through">
+          <p className="mt-2 text-sm text-gray-400 line-through">
             <span className="sr-only">Preço original: </span>
             R$ {fullPrice.toFixed(2)}
           </p>
