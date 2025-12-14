@@ -72,6 +72,7 @@ export const removeFromWishlist = async (req: Request, res: Response) => {
     const wishlist: WishlistItem[] = JSON.parse(data);
 
     const exists = wishlist.find((item) => item.code === code);
+
     if (!exists) {
       return res
         .status(400)

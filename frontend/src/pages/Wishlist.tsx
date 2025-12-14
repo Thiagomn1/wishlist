@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { wishlistApi } from '../services/api';
-import type { Product } from '../types';
+import type { Product, WishlistItem } from '../types';
 import ProductList from '../components/ProductList';
 
 function Wishlist() {
-  const [wishlistItems, setWishlistItems] = useState<Product[]>([]);
+  const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

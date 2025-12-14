@@ -1,11 +1,11 @@
-import type { Product } from '../types';
+import type { Product, WishlistItem } from '../types';
 import Breadcrumb from './Breadcrumb';
 import ProductCard from './ProductCard';
 
 interface ProductListProps {
   products: Product[];
   onToggle: (product: Product) => void;
-  wishlistItems: Product[];
+  wishlistItems: WishlistItem[];
   isWishlistPage?: boolean;
 }
 
