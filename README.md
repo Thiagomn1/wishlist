@@ -56,6 +56,13 @@ cd wishlist
 npm run install:all
 ```
 
+3. Adicionar .env
+
+```bash
+cd backend
+cp .env.example .env
+```
+
 ### Executando o projeto
 
 **Rodar frontend e backend juntos:**
