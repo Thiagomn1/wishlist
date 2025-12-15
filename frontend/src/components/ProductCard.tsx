@@ -59,7 +59,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className="relative flex max-w-[250px] cursor-pointer flex-col rounded-md border border-gray-200 bg-white p-3 shadow-[4px_3px_8px_rgba(0,0,0,0.5)] transition-all hover:scale-[1.01]">
+    <div className="relative max-w-[250px] cursor-pointer rounded-md border border-gray-200 bg-white p-3 shadow-[4px_3px_8px_rgba(0,0,0,0.5)] transition-all hover:scale-[1.01]">
       {isWishlistPage ? (
         <button
           aria-label="Remover da Wishlist"
@@ -97,8 +97,8 @@ export default function ProductCard({
         className="h-40 w-full rounded-lg object-cover"
       />
 
-      <div className="flex flex-1 flex-col">
-        <p className="mt-3 line-clamp-2 leading-5 font-medium text-gray-700">
+      <div>
+        <p className="mt-3 line-clamp-2 min-h-10 leading-5 font-medium text-gray-700">
           {product.name}
         </p>
 
@@ -116,7 +116,7 @@ export default function ProductCard({
           </span>
         </div>
 
-        <div className="mt-auto">
+        <div>
           <p className="mt-2 text-sm text-gray-400 line-through">
             <span className="sr-only">Preço original: </span>
             R$ {fullPrice.toFixed(2)}

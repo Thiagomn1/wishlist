@@ -51,9 +51,9 @@ function ProfileDropdown() {
 
 function Navbar() {
   return (
-    <nav className="bg-purple relative flex items-center justify-between p-4 text-white">
+    <nav className="bg-purple flex items-center justify-between p-4 text-white">
       {/* Seção Esquerda*/}
-      <div className="flex items-center">
+      <div>
         <div className="md:hidden">
           <ProfileDropdown />
         </div>
@@ -80,7 +80,7 @@ function Navbar() {
         <Link
           to="/wishlist"
           aria-label="Ir para Wishlist"
-          className="hidden cursor-pointer items-center space-x-1 transition hover:text-purple-400 md:flex"
+          className="hidden cursor-pointer space-x-1 transition hover:text-purple-400 md:flex md:items-center"
         >
           <CiHeart data-testid="nav-wishlist-icon" className="" size={40} />
           <p className="text-xl font-bold">Wishlist</p>
