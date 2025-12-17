@@ -10,7 +10,7 @@ interface ProductCardProps {
   isWishlistPage?: boolean;
 }
 
-export default function ProductCard({
+function ProductCard({
   product,
   onToggle,
   isWishlisted = false,
@@ -131,3 +131,5 @@ export default function ProductCard({
     </div>
   );
 }
+
+export default ProductCard;
